@@ -9,7 +9,8 @@
   font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-size:20px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:20px;line-height:1.5;-webkit-tap-highlight-color:transparent;word-break:keep-all;overflow-wrap:anywhere}
 
 /* 버튼 */
 .btn{font:inherit;border:0;border-radius:16px;padding:.5em 1.1em;min-height:56px;background:var(--paper);color:var(--ink);
@@ -21,9 +22,12 @@ body{margin:0;background:var(--bg);color:var(--ink);font-size:20px;line-height:1
 .btn.small{min-height:44px;font-size:.85em;padding:.3em .8em}
 
 /* 장소 페이지 화면 */
-.screen{max-width:900px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:12px}
+.screen{max-width:900px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:12px}
 .bar{display:flex;align-items:center;gap:8px}
-.bar .title{flex:1;text-align:center;font-weight:700;color:var(--main)}
+.bar .btn{flex-shrink:0}
+.bar .title{flex:1;min-width:0;text-align:center;font-weight:700;color:var(--main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .home .lbl{margin-left:.3em}
+.bar .voice.off{opacity:.6}
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
 h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 .lead{font-size:1.2em;margin:0;max-width:600px}
@@ -66,7 +70,8 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 .review p{margin:0;font-weight:700}
 
 /* 대문 */
-.hub-head{text-align:center;padding:28px 16px 8px}
+.hub-head{text-align:center;padding:28px 16px 8px;position:relative}
+.hub-head .back{position:absolute;left:12px;top:12px}
 .hub-head h1{margin:0}
 .hub-head p{margin:.3em 0}
 .total{font-weight:700;color:var(--main)}
@@ -81,12 +86,13 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 .card .st{margin-top:8px;font-weight:700;color:var(--star)}
 .card .st i{font-style:normal;color:#ddd3c4}
 .card .st.new{color:var(--c)}
+.card .st.sum{color:var(--ink)}
 .card.soon{filter:grayscale(1);opacity:.6}
 .card.soon .st{color:#7a6a5a}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6em 1.2em;border-radius:999px}
 
 /* 그림 속 움직임 — SVG 요소에 class="a-이름" style="--d:1.2s"(시작 지연) 를 붙여 씁니다 */
-.a-drop,.a-pop,.a-fade,.a-rise,.a-wave,.a-glow,.a-bloom,.a-shutL,.a-shutR,.a-drift,.a-dim,.a-bright,.a-jump{
+.a-drop,.a-pop,.a-fade,.a-rise,.a-wave,.a-glow,.a-bloom,.a-shutL,.a-shutR,.a-drift,.a-dim,.a-bright,.a-jump,.a-sweep,.a-out{
   animation-delay:var(--d,0s);animation-fill-mode:both;transform-box:fill-box;transform-origin:center}
 .a-drop{animation-name:drop;animation-duration:.7s;animation-timing-function:cubic-bezier(.3,1.4,.6,1)}
 .a-pop{animation-name:pop;animation-duration:.6s}
@@ -101,6 +107,10 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 .a-dim{animation-name:dim;animation-duration:3s}
 .a-bright{animation-name:bright;animation-duration:3s}
 .a-jump{animation-name:jump;animation-duration:.8s;animation-iteration-count:infinite;animation-direction:alternate;animation-timing-function:ease-in-out}
+/* a-sweep: 위쪽 가운데를 축으로 좌우로 흔들림(탐조등) / a-out: 서서히 사라짐 */
+.a-sweep{animation-name:sweep;animation-duration:2.4s;animation-iteration-count:infinite;animation-direction:alternate;animation-timing-function:ease-in-out;transform-origin:top center}
+.a-out{animation-name:bright;animation-duration:1.5s}
+@keyframes sweep{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
 @keyframes drop{from{transform:translateY(-80px);opacity:0}to{transform:none;opacity:1}}
 @keyframes pop{from{transform:scale(0);opacity:0}70%{transform:scale(1.15);opacity:1}to{transform:scale(1);opacity:1}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
@@ -114,6 +124,37 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 @keyframes dim{from{opacity:0}to{opacity:.45}}
 @keyframes bright{from{opacity:1}to{opacity:0}}
 @keyframes jump{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+
+/* ===== 휴대폰 (기준: 6인치, 세로 360×740 CSS px / 최소 320px) =====
+ * 한 화면에 스크롤 없이 [위 막대 → 그림 → 자막 → 버튼] 이 다 보여야 합니다. README 「화면 기준」 참고 */
+@media (max-width:480px){
+  body{font-size:17px}
+  .screen{padding:8px 10px}
+  main{justify-content:flex-start;gap:10px;padding-top:6px}
+  h1{font-size:1.6em}
+  .lead{font-size:1.05em}
+  .btn{min-height:48px;padding:.4em .8em}
+  .btn.big{min-height:56px;font-size:1.1em}
+  .btn.small{min-height:44px;padding:.2em .7em}
+  .bar .home .lbl{display:none}
+  .cap{min-height:0}
+  .cap h2{font-size:1.05em;margin:.2em 0 0}
+  .cap p{font-size:clamp(19px,5.6vw,24px);line-height:1.4}
+  .ctrl .btn{min-width:64px}
+  .q{font-size:clamp(21px,6vw,26px)}
+  .opts .opt{min-height:58px;font-size:1.15em}
+  .opts.ox .opt{font-size:2.4em;min-height:96px}
+  .fb{font-size:1.05em;min-height:2.5em}
+  .stars{font-size:3em}
+  .hub-head{padding:12px 12px 4px}
+  .hub-head .back{position:static;margin-bottom:6px}
+  .cards{padding:10px;gap:10px;grid-template-columns:1fr 1fr}
+  .card{padding:12px;border-top-width:8px;border-radius:16px}
+  .card .ic{font-size:2em}
+  .card b{font-size:1.05em;line-height:1.3}
+  .card small{font-size:.75em;line-height:1.3}
+  .card .st{margin-top:4px;font-size:.9em}
+}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01s!important;animation-iteration-count:1!important}

@@ -6,10 +6,17 @@
 <title>서대문형무소 · 문화탐방</title>
 <link rel="stylesheet" href="../../common/tour.css">
 </head>
-<body>
-<div id="app"></div>
-<script src="data.js"></script>
-<script src="../../common/tour.js"></script>
-<script>Tour.start(window.TOUR_DATA, { home: '../../index.html' });</script>
+<body style="--main:#8b3a2b">
+<header class="hub-head">
+  <a class="btn small back" href="../../index.html">🏠 대문</a>
+  <h1>서대문형무소</h1>
+  <p>보고 싶은 이야기를 골라요. 역사관에 가면 그곳을 직접 찾아봐요!</p>
+  <p class="total" id="total"></p>
+</header>
+<main class="cards" id="cards"></main>
+<p class="toast" id="toast" hidden></p>
+<script src="stories.js"></script>
+<script src="../../common/hub.js"></script>
+<script>Hub.render(window.STORIES);</script>
 </body>
 </html>

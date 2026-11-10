@@ -1,5 +1,6 @@
 /* 문화탐방 공통 엔진: 시작 화면 → 그림 해설 → 퀴즈 → 결과
- * 장소 페이지에서  Tour.start(window.TOUR_DATA, { home: "../../index.html" })  로 부릅니다.
+ * 이야기 페이지에서  Tour.start(window.TOUR_DATA, { home: '../index.html', homeLabel: '◀ 장소이름' })  로 부릅니다.
+ * home = 돌아갈 곳(작은 대문), homeLabel = 돌아가기 버튼 글자.
  * 장소마다 바뀌는 내용은 모두 data.js 에 있고, 이 파일은 고칠 필요가 없습니다. */
 (() => {
   'use strict';
@@ -9,7 +10,7 @@
     set(k, v) { try { localStorage.setItem(KEY + k, v); } catch (e) { /* 저장 못 해도 계속 */ } }
   };
   const hasTTS = 'speechSynthesis' in window;
-  let D, home, app;
+  let D, home, homeLabel, homeIcon, homeText, app;
   let voice = store.get('voice') !== 'off';
   let run = 0;            // 화면이 바뀔 때마다 1씩 늘어남 → 지난 화면의 타이머·음성 콜백 무시
   let timer = null, sceneIdx = 0, paused = false, backTo = null;
@@ -29,13 +30,13 @@
     stopAll();
     app.className = 'screen ' + cls;
     app.innerHTML =
-      `<header class="bar"><a class="btn small" href="${home}">🏠 대문</a>` +
+      `<header class="bar"><a class="btn small home" href="${home}" aria-label="${homeText}">${homeIcon}<span class="lbl">${homeText}</span></a>` +
       `<span class="title">${D.name}</span>` +
       (hasTTS ? `<button class="btn small voice"></button>` : '') +
       `</header><main>${inner}</main>`;
     const vb = $('.voice');
     if (vb) {
-      const paint = () => { vb.textContent = voice ? '🔊 읽어 주기' : '🔇 조용히'; vb.setAttribute('aria-pressed', voice); };
+      const paint = () => { vb.innerHTML = (voice ? '🔊' : '🔇') + ' 읽기'; vb.classList.toggle('off', !voice); vb.setAttribute('aria-pressed', voice); vb.setAttribute('aria-label', voice ? '읽어 주기 켜짐' : '읽어 주기 꺼짐'); };
       paint();
       vb.onclick = () => {
         voice = !voice; store.set('voice', voice ? 'on' : 'off'); paint();
@@ -235,7 +236,7 @@
        <h1>${n}문제 중 ${score}개 맞았어요</h1>
        <p class="lead">${msg}</p>
        ${scenes.length ? `<div class="review"><p>다시 보면 좋은 장면</p>${scenes.map(s => `<button class="btn scene" data-s="${s - 1}">${D.scenes[s - 1].title}</button>`).join('')}</div>` : ''}
-       <div class="row"><button class="btn retry">다시 풀기</button><a class="btn big" href="${home}">🏠 대문으로</a></div>`,
+       <div class="row"><button class="btn retry">다시 풀기</button><a class="btn big" href="${home}">${homeLabel}</a></div>`,
       'result');
     $$('.scene').forEach(b => { b.onclick = () => story(+b.dataset.s, result); });
     $('.retry').onclick = quiz;
@@ -255,7 +256,10 @@
   window.Tour = {
     start(data, opt) {
       D = data;
-      home = (opt && opt.home) || '../../index.html';
+      home = (opt && opt.home) || '../index.html';
+      homeLabel = (opt && opt.homeLabel) || '🏠 대문';
+      homeIcon = homeLabel.split(" ")[0];
+      homeText = homeLabel.replace(/^\S+\s*/, "");
       app = document.getElementById('app');
       document.documentElement.style.setProperty('--main', (D.theme && D.theme.main) || '#8b3a2b');
       document.title = D.name + ' · 문화탐방';

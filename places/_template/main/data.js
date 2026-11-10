@@ -1,6 +1,7 @@
-/* 새 장소 틀 — 이 폴더를 통째로 복사해서 이름을 바꾼 뒤 내용을 채우세요.
- * 자세한 규칙: 저장소 README.md 「새 장소 추가하기」 */
+/* 이야기 틀 — 자세한 규칙: 저장소 README.md 「data.js 형식」
+ * 공통 그림 조각(벽돌, 태극기, 무궁화, 사람 등)은 window.ART 에 있어요. */
 (() => {
+  const { brick, person, text, svg } = window.ART;
   // 장면 그림: viewBox 0 0 400 240, 움직임은 class="a-drop|a-pop|a-fade|..." + style="--d:1s"
   const S1 = `<svg viewBox="0 0 400 240">
     <rect width="400" height="240" fill="#fdf3e1"/>
@@ -9,9 +10,9 @@
     <text class="a-pop" style="--d:1.2s" x="200" y="60" text-anchor="middle" font-size="36" font-weight="800" fill="#8b3a2b">0000</text></svg>`;
 
   window.TOUR_DATA = {
-    id: 'place-id',                 // 폴더 이름과 같게, 영어 소문자
+    id: 'place-id',                 // 첫 이야기는 장소 id, 다음 이야기는 'place-id-주제' (stories.js 의 id 와 같게)
     name: '장소 이름',
-    theme: { main: '#8b3a2b' },     // places.js 의 color 와 같게
+    theme: { main: '#8b3a2b' },     // stories.js 의 color 와 같게
     intro: '한두 문장 소개. 해요체로 써요.',
     cover: S1,
 

@@ -15,31 +15,7 @@
 <main class="cards" id="cards"></main>
 <p class="toast" id="toast" hidden></p>
 <script src="places.js"></script>
-<script>
-(() => {
-  const box = document.getElementById('cards');
-  const toast = document.getElementById('toast');
-  const starsOf = id => { try { return +localStorage.getItem('lftc:stars:' + id) || 0; } catch (e) { return 0; } };
-  let got = 0, max = 0, t;
-  window.PLACES.forEach(p => {
-    const s = p.ready ? starsOf(p.id) : 0;
-    if (p.ready) { got += s; max += 3; }
-    const card = document.createElement(p.ready ? 'a' : 'button');
-    card.className = 'card' + (p.ready ? '' : ' soon');
-    card.style.setProperty('--c', p.color);
-    if (p.ready) card.href = p.path;
-    const st = !p.ready ? '<span class="st">준비 중</span>'
-      : s ? `<span class="st">${'★'.repeat(s)}<i>${'★'.repeat(3 - s)}</i></span>`
-      : '<span class="st new">새로 열렸어요!</span>';
-    card.innerHTML = `<span class="ic">${p.icon}</span><b>${p.name}</b><small>${p.region}</small>${st}`;
-    if (!p.ready) card.onclick = () => {
-      toast.textContent = p.name + ' 탐방은 곧 열려요!'; toast.hidden = false;
-      clearTimeout(t); t = setTimeout(() => { toast.hidden = true; }, 2000);
-    };
-    box.appendChild(card);
-  });
-  document.getElementById('total').textContent = `모은 별 ★ ${got} / ${max}`;
-})();
-</script>
+<script src="common/hub.js"></script>
+<script>Hub.render(window.PLACES);</script>
 </body>
 </html>

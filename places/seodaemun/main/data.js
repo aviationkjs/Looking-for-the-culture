@@ -1,33 +1,10 @@
 /* 서대문형무소 — 장면 글, 그림(SVG), 퀴즈 데이터
  * 형식 설명은 저장소의 README.md 「data.js 형식」을 보세요. */
 (() => {
-  /* ---------- 여러 장면에서 함께 쓰는 그림 조각 ---------- */
-  // 벽돌 무늬
-  const BRICK = `<pattern id="brk" width="20" height="12" patternUnits="userSpaceOnUse">
-    <rect width="20" height="12" fill="#a4473a"/>
-    <path d="M0 .5H20M0 6.5H20M5 0V6M15 6V12" stroke="#e9cdb5" stroke-width="1"/></pattern>`;
-
-  // 태극기 (가로:세로 = 3:2, 태극은 왼쪽 위→오른쪽 아래 대각선 기준)
-  const bar = (x, broken) => broken
-    ? `<rect x="${x - .83}" y="-5" width="1.67" height="4.4"/><rect x="${x - .83}" y=".6" width="1.67" height="4.4"/>`
-    : `<rect x="${x - .83}" y="-5" width="1.67" height="10"/>`;
-  const gwae = (cx, cy, a, p) => `<g transform="translate(${cx} ${cy}) rotate(${a})">${[-2.5, 0, 2.5].map((x, i) => bar(x, p[i])).join('')}</g>`;
-  const FLAG = `<symbol id="tg" viewBox="0 0 60 40">
-    <rect width="60" height="40" fill="#fff" stroke="#bbb" stroke-width=".5"/>
-    <g transform="translate(30 20) rotate(33.69)"><circle r="10" fill="#0047a0"/>
-      <path d="M-10 0A10 10 0 0 1 10 0A5 5 0 0 0 0 0A5 5 0 0 1 -10 0Z" fill="#cd2e3a"/></g>
-    <g fill="#000">${gwae(13.36, 8.91, 33.69, [0, 0, 0])}${gwae(46.64, 31.09, 33.69, [1, 1, 1])}${gwae(46.64, 8.91, -33.69, [1, 0, 1])}${gwae(13.36, 31.09, -33.69, [0, 1, 0])}</g>
-  </symbol>`;
-
-  // 무궁화
-  const FLOWER = `<symbol id="mg" viewBox="-12 -12 24 24">
-    ${[0, 72, 144, 216, 288].map(r => `<ellipse cy="-6" rx="5" ry="6.5" fill="#f4b3cf" stroke="#e58bb3" stroke-width=".6" transform="rotate(${r})"/>`).join('')}
-    <circle r="3.6" fill="#c2185b"/><circle r="1.2" fill="#fff3a0"/></symbol>`;
-
-  // 사람 실루엣 (얼굴 없이). up=true 면 두 팔을 든 모습
-  const person = (x, y, fill, up, d) => `<g transform="translate(${x} ${y})"><g class="${up ? 'a-jump' : 'a-fade'}" style="--d:${d}s" fill="${fill}">
-    <circle cy="-30" r="7"/><rect x="-8" y="-22" width="16" height="24" rx="7"/>
-    ${up ? `<path d="M-7 -18L-15 -34M7 -18L15 -34" stroke="${fill}" stroke-width="4" stroke-linecap="round"/>` : ''}</g></g>`;
+  const { person } = window.ART;
+  const BRICK = window.ART.brick();
+  const FLAG = window.ART.FLAG;
+  const FLOWER = window.ART.FLOWER;
 
   /* ---------- 장면 그림 (모두 viewBox 0 0 400 240) ---------- */
   const S1 = `<svg viewBox="0 0 400 240"><defs>${BRICK}</defs>
@@ -77,7 +54,7 @@
     <text class="a-rise" style="--d:3.9s" x="95" y="200" text-anchor="middle" font-size="18" font-weight="800" fill="#ffd76a">만세!</text>
     <text class="a-rise" style="--d:4.8s" x="310" y="200" text-anchor="middle" font-size="18" font-weight="800" fill="#ffd76a">만세!</text></svg>`;
 
-  const flower = (x, y, d, s) => `<g transform="translate(${x} ${y})"><use href="#mg" x="${-s / 2}" y="${-s / 2}" width="${s}" height="${s}" class="a-bloom" style="--d:${d}s"/></g>`;
+  const { flower } = window.ART;
   const S5 = `<svg viewBox="0 0 400 240"><defs>${BRICK}${FLOWER}</defs>
     <rect width="400" height="240" fill="#dff0f7"/>
     <circle class="a-pop" style="--d:1.4s" cx="70" cy="56" r="26" fill="#f6c453"/>
