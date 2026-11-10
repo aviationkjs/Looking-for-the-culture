@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인사동 · 문화탐방</title>
+<link rel="stylesheet" href="../../common/tour.css?v=2">
+</head>
+<body style="--main:#2f6f6a">
+<header class="hub-head">
+  <a class="btn small back" href="../../index.html">🏠 대문</a>
+  <h1>인사동</h1>
+  <p>보고 싶은 이야기를 골라요. 역사관에 가면 그곳을 직접 찾아봐요!</p>
+  <p class="total" id="total"></p>
+</header>
+<main class="cards" id="cards"></main>
+<p class="toast" id="toast" hidden></p>
+<script src="stories.js?v=2"></script>
+<script src="../../common/hub.js?v=2"></script>
+<script>Hub.render(window.STORIES);</script>
+</body>
+</html>
