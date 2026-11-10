@@ -36,7 +36,7 @@
       `</header><main>${inner}</main>`;
     const vb = $('.voice');
     if (vb) {
-      const paint = () => { vb.innerHTML = (voice ? '🔊' : '🔇') + ' 읽기'; vb.classList.toggle('off', !voice); vb.setAttribute('aria-pressed', voice); vb.setAttribute('aria-label', voice ? '읽어 주기 켜짐' : '읽어 주기 꺼짐'); };
+      const paint = () => { vb.innerHTML = (voice ? '🔊' : '🔇') + '<span class="lbl">읽기</span>'; vb.classList.toggle('off', !voice); vb.setAttribute('aria-pressed', voice); vb.setAttribute('aria-label', voice ? '읽어 주기 켜짐' : '읽어 주기 꺼짐'); };
       paint();
       vb.onclick = () => {
         voice = !voice; store.set('voice', voice ? 'on' : 'off'); paint();

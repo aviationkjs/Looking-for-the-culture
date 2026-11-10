@@ -8,6 +8,7 @@
   --star:#f2b705;
   font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
 }
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-size:20px;line-height:1.5;-webkit-tap-highlight-color:transparent;word-break:keep-all;overflow-wrap:anywhere}
@@ -28,6 +29,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-size:20px;line-height:1
 .bar .title{flex:1;min-width:0;text-align:center;font-weight:700;color:var(--main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar .home .lbl{margin-left:.3em}
 .bar .voice.off{opacity:.6}
+.bar .voice .lbl{margin-left:.25em}
 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px}
 h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
 .lead{font-size:1.2em;margin:0;max-width:600px}
@@ -136,6 +138,9 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
   .btn{min-height:48px;padding:.4em .8em}
   .btn.big{min-height:56px;font-size:1.1em}
   .btn.small{min-height:44px;padding:.2em .7em}
+  .bar{gap:6px}
+  .bar .btn.small{min-width:44px;padding:.2em .55em}
+  .bar .title{font-size:.95em}
   .bar .home .lbl{display:none}
   .cap{min-height:0}
   .cap h2{font-size:1.05em;margin:.2em 0 0}
@@ -154,6 +159,11 @@ h1{font-size:2em;margin:.2em 0;color:var(--main);line-height:1.25}
   .card b{font-size:1.05em;line-height:1.3}
   .card small{font-size:.75em;line-height:1.3}
   .card .st{margin-top:4px;font-size:.9em}
+}
+
+/* 아주 좁은 화면(화면 확대·큰 글꼴 설정 포함): 🔊 읽기 버튼도 아이콘만 */
+@media (max-width:400px){
+  .bar .voice .lbl{display:none}
 }
 
 @media (prefers-reduced-motion:reduce){
