@@ -46,10 +46,25 @@
     }
   }
 
+  // 기기에 있는 한국어 음성 중 가장 자연스러운 목소리를 고름 (점수가 높은 순)
+  //  - Natural/Neural/Online : Edge·윈도우의 자연스러운 음성 (예: Microsoft SunHi Online (Natural))
+  //  - Enhanced/Premium/향상  : 아이폰·맥의 고품질 음성
+  //  - Google                : 안드로이드·크롬의 Google 한국어 음성
   let koVoice = null;
+  const VOICE_SCORE = [
+    [/natural|neural/i, 50], [/online/i, 20], [/premium|enhanced|향상|고품질/i, 40],
+    [/google/i, 30], [/samsung|삼성/i, 15], [/yuna|유나|sunhi|선희|injoon|인준/i, 10]
+  ];
   function pickVoice() {
     if (!hasTTS) return;
-    koVoice = speechSynthesis.getVoices().find(v => /^ko/i.test(v.lang)) || null;
+    const ko = speechSynthesis.getVoices().filter(v => /^ko/i.test(v.lang));
+    let best = null, bestScore = -1;
+    ko.forEach(v => {
+      let sc = VOICE_SCORE.reduce((a, [re, n]) => a + (re.test(v.name) ? n : 0), 0);
+      if (!v.localService) sc += 5;          // 인터넷으로 받는 음성이 대체로 더 자연스러움
+      if (sc > bestScore) { best = v; bestScore = sc; }
+    });
+    koVoice = best;
   }
 
   // 글을 소리 내어 읽고, 다 읽으면 done() 을 부름. 읽어 주기가 꺼져 있으면 바로 done()
@@ -59,7 +74,7 @@
     const end = () => { if (finished || my !== run) return; finished = true; done && done(); };
     if (!voice || !hasTTS) { end(); return; }
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'ko-KR'; u.rate = 0.9;
+    u.lang = 'ko-KR'; u.rate = 0.92; u.pitch = 1.05;   // 아이에게 맞게 조금 천천히, 조금 밝게
     if (koVoice) u.voice = koVoice;
     u.onend = end; u.onerror = end;
     speechSynthesis.speak(u);
