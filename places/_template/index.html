@@ -4,19 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>장소 이름 · 문화탐방</title>
-<link rel="stylesheet" href="../../common/tour.css?v=3">
+<link rel="stylesheet" href="../../common/tour.css?v=4">
 </head>
 <body style="--main:#8b3a2b">
-<header class="hub-head">
-  <a class="btn small back" href="../../index.html">🏠 대문</a>
-  <h1>장소 이름</h1>
-  <p>보고 싶은 이야기를 골라요. 역사관에 가면 그곳을 직접 찾아봐요!</p>
-  <p class="total" id="total"></p>
-</header>
-<main class="cards" id="cards"></main>
+<div class="hub">
+  <header class="hub-head">
+    <a class="btn small back" href="../../index.html">🏠 대문</a>
+    <h1>장소 이름</h1>
+    <p class="lead">보고 싶은 이야기를 골라요. 그곳에 가면 그곳을 직접 찾아봐요!</p>
+  </header>
+  <section class="card mine" id="mine"></section>
+  <main class="items" id="cards"></main>
+</div>
 <p class="toast" id="toast" hidden></p>
-<script src="stories.js?v=3"></script>
-<script src="../../common/hub.js?v=3"></script>
-<script>Hub.render(window.STORIES);</script>
+<script src="stories.js?v=4"></script>
+<script src="../../common/hub.js?v=4"></script>
+<script>Hub.render(window.STORIES, { layout: 'list' });</script>
 </body>
 </html>

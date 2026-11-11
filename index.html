@@ -4,18 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>우리 가족 문화탐방</title>
-<link rel="stylesheet" href="common/tour.css?v=3">
+<link rel="stylesheet" href="common/tour.css?v=4">
 </head>
 <body>
-<header class="hub-head">
-  <h1>우리 가족 문화탐방</h1>
-  <p>장소를 골라 그림 해설을 보고, 퀴즈를 풀어 별을 모아요!</p>
-  <p class="total" id="total"></p>
-</header>
-<main class="cards" id="cards"></main>
+<div class="hub">
+  <header class="hub-head">
+    <h1>우리 가족 문화탐방</h1>
+    <p class="lead">장소를 골라 그림 해설을 보고, 퀴즈를 풀어 별을 모아요!</p>
+  </header>
+  <section class="card mine" id="mine"></section>
+  <main class="cards" id="cards"></main>
+</div>
 <p class="toast" id="toast" hidden></p>
-<script src="places.js?v=3"></script>
-<script src="common/hub.js?v=3"></script>
-<script>Hub.render(window.PLACES);</script>
+<script src="places.js?v=4"></script>
+<script src="common/hub.js?v=4"></script>
+<script>Hub.render(window.PLACES, { layout: 'grid' });</script>
 </body>
 </html>
