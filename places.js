@@ -9,6 +9,7 @@ window.PLACES = [
   { id: 'insadong', name: '인사동', sub: '서울 종로구', icon: '🏮', color: '#2f6f6a',
     path: 'places/insadong/index.html', ready: true,
     stories: ['insadong', 'insadong-type', 'insadong-taehwa', 'insadong-sign', 'insadong-munbang'] },
-  { id: 'gyeongbokgung', name: '경복궁', sub: '서울 종로구', icon: '👑', color: '#2f5d8a',
-    path: 'places/gyeongbokgung/index.html', ready: false }
+  { id: 'yulgok', name: '파주 율곡 이이 유적', sub: '경기 파주시', icon: '📜', color: '#6a4c93',
+    path: 'places/yulgok/index.html', ready: true,
+    stories: ['yulgok', 'yulgok-jangwon', 'yulgok-hwaseok', 'yulgok-seowon'] }
 ];

@@ -24,7 +24,10 @@
 | | 3·1운동이 시작된 곳 (`taehwa`) | 3·1독립선언광장 · 탑골공원 | 5 | 6 |
 | | 한글 간판 찾기 (`sign`) | 인사동길 가게들 | 5 | 6 |
 | | 붓·먹·종이·벼루 (`munbang`) | 필방 거리 | 5 | 6 |
-| 경복궁 | (준비 중) | | | |
+| 파주 율곡 이이 유적 | 지폐 속 엄마와 아들 (`main`) | 처음 보는 친구용 · 율곡기념관 | 5 | 6 |
+| | 아홉 번 장원급제 (`jangwon`) | 율곡기념관 | 5 | 6 |
+| | 화석정의 비밀 (`hwaseok`) | 화석정(파평면, 차로 이동) | 5 | 6 |
+| | 자운서원과 가족 묘 (`seowon`) | 자운서원 · 느티나무 · 가족 묘 | 5 | 6 |
 
 새 장소·이야기를 추가하면 이 표도 함께 고쳐 주세요.
 
@@ -99,6 +102,7 @@ Looking-for-the-culture/
    │  ├─ stories.js          이야기 목록
    │  └─ main/               첫 이야기 (index.html + data.js)
    ├─ insadong/              인사동 (main · type · taehwa · sign · munbang)
+   ├─ yulgok/                파주 율곡 이이 유적 (main · jangwon · hwaseok · seowon)
    └─ seodaemun/             서대문형무소
       ├─ index.html          작은 대문 (이야기 카드 4개)
       ├─ stories.js          이야기 목록
@@ -154,14 +158,14 @@ Looking-for-the-culture/
 
 ## 6. 새 장소 추가하기
 
-예: 경복궁(`gyeongbokgung`)
+예: 수원 화성(`hwaseong`)
 
-1. **폴더 복사** — `places/_template/` 을 통째로 복사해 `places/gyeongbokgung/` 으로 이름 바꾸기 (영어 소문자, 띄어쓰기 대신 `-`)
+1. **폴더 복사** — `places/_template/` 을 통째로 복사해 `places/hwaseong/` 으로 이름 바꾸기 (영어 소문자, 띄어쓰기 대신 `-`)
 2. **`index.html`(작은 대문)** — `<title>`, `<h1>`, `body` 의 `--main` 색 바꾸기
-3. **`stories.js`** — 첫 이야기 줄의 `id` 를 `'gyeongbokgung'`, `name` 을 `'경복궁 이야기'` 로
-4. **`main/index.html`** — `<title>` 과 `homeLabel: '◀ 경복궁'` 바꾸기
-5. **`main/data.js`** — 내용 채우기 (`id: 'gyeongbokgung'`)
-6. **`places.js`** — 경복궁 줄의 `ready: true`, `stories: ['gyeongbokgung']` (이야기가 늘면 계속 추가)
+3. **`stories.js`** — 첫 이야기 줄의 `id` 를 `'hwaseong'`, `name` 을 `'수원 화성 이야기'` 로
+4. **`main/index.html`** — `<title>` 과 `homeLabel: '◀ 수원 화성'` 바꾸기
+5. **`main/data.js`** — 내용 채우기 (`id: 'hwaseong'`)
+6. **`places.js`** — 장소 한 줄 추가 (`ready: true`, `stories: ['hwaseong']`, 이야기가 늘면 계속 추가)
 7. 이야기를 더 만들 때는 「5. 새 이야기 추가하기」 순서대로
 
 ---
