@@ -40,6 +40,7 @@
 /* 장소 테마 (html 의 data-place) */
 [data-place=seodaemun]{--bg:#f0f0f7;--text:#2f2f36;--text-2:#5f5f64;--border:#d4d3dd;--shadow-rgb:47,47,54}
 [data-place=yulgok]{--bg:#f0f0f7;--text:#2f2f36;--text-2:#5f5f64;--border:#e7def5;--shadow-rgb:87,77,102}
+[data-place=yangnyeong]{--bg:#f7f3e3;--text:#3a3320;--text-2:#6b5a2a;--border:#e6dcb8;--shadow-rgb:90,70,20}
 [data-place=insadong]{--bg:#f0f0e0;--text:#3e481d;--text-2:#5a6b2a;--border:#dce3ce;--shadow-rgb:62,72,29}
 
 /* ===== 2. 기본 ===== */
@@ -201,7 +202,10 @@ h1{font-size:var(--fs-4);margin:0;color:var(--text);line-height:1.25}
 .item small{display:block;font-size:13px;color:var(--text-2);line-height:1.35}
 .item .st{flex:0 0 auto;text-align:right;font-size:15px;color:var(--star);letter-spacing:-1px}
 .item .st i{font-style:normal;color:var(--border)}
-.item .badge{margin-top:4px}
+.item .badge{margin-top:4px;margin-right:4px}
+.think{padding:var(--sp-3);text-align:left}
+.think b{display:block;color:var(--main);margin-bottom:4px}
+.think p{margin:0;font-size:var(--fs-1)}
 .toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--text);color:#fff;
   padding:var(--sp-2) var(--sp-3);border-radius:var(--r-full);box-shadow:var(--sh-high);font-weight:700;z-index:30}
 .soon{filter:grayscale(1);opacity:.6}

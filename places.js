@@ -11,5 +11,8 @@ window.PLACES = [
     stories: ['insadong', 'insadong-type', 'insadong-taehwa', 'insadong-sign', 'insadong-munbang'] },
   { id: 'yulgok', name: '파주 율곡 이이 유적', sub: '경기 파주시', icon: '📜', color: '#6a4c93',
     path: 'places/yulgok/index.html', ready: true,
-    stories: ['yulgok', 'yulgok-jangwon', 'yulgok-hwaseok', 'yulgok-seowon'] }
+    stories: ['yulgok', 'yulgok-jangwon', 'yulgok-hwaseok', 'yulgok-seowon'] },
+  { id: 'yangnyeong', name: '양녕대군 묘역·지덕사', sub: '서울 동작구', icon: '👑', color: '#8a6400',
+    path: 'places/yangnyeong/index.html', ready: true, level: '고학년',
+    stories: ['yangnyeong', 'yangnyeong-hyeonpan', 'yangnyeong-jideok', 'yangnyeong-mission'] }
 ];

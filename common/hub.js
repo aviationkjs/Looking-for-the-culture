@@ -31,7 +31,7 @@ window.Hub = {
         el.className = 'item' + (p.ready ? '' : ' soon');
         const starTxt = !p.ready ? '<span class="badge">준비 중</span>'
           : s ? `${'★'.repeat(s)}<i>${'★'.repeat(3 - s)}</i>` : '<i>★★★</i>';
-        const tag = i === 0 && !s && p.ready ? '<span class="badge on">여기부터</span>' : '';
+        const tag = (i === 0 && !s && p.ready ? '<span class="badge on">여기부터</span>' : '') + (p.level ? `<span class="badge">${p.level}</span>` : '');
         el.innerHTML = `<span class="num">${p.icon}</span><span class="tx"><b>${esc(p.name)}</b><small>${esc(p.sub)}</small>${tag}</span><span class="st">${starTxt}</span>`;
       } else {
         el.className = 'pcard' + (p.ready ? '' : ' soon');
@@ -39,7 +39,7 @@ window.Hub = {
           : played === 0 ? '<span class="badge on" style="background:var(--c)">새로 열림</span>'
           : played === ids.length ? '<span class="badge done">✓ 완료</span>'
           : '<span class="badge">탐방 중</span>';
-        el.innerHTML = `<span class="ic">${p.icon}</span><b>${esc(p.name)}</b><small>${esc(p.sub)} · 이야기 ${ids.length}개</small>
+        el.innerHTML = `<span class="ic">${p.icon}</span><b>${esc(p.name)}</b><small>${esc(p.sub)} · 이야기 ${ids.length}개${p.level ? ' · ' + p.level : ''}</small>
           <span class="bar-prog"><i style="width:${(played / ids.length) * 100}%"></i></span>${badge}`;
       }
       if (!p.ready) el.onclick = () => {

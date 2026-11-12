@@ -130,7 +130,7 @@
     shell(
       `<div class="art">${D.cover || ''}</div>
        <h1>${D.name}</h1>
-       <div class="chips"><span class="badge">⏱ 약 2분</span><span class="badge">❓ 문제 ${D.questions.length}개</span>${spot ? `<span class="badge">📍 ${spot}</span>` : ''}</div>
+       <div class="chips"><span class="badge">⏱ 약 ${Math.max(2, Math.round(D.scenes.reduce((a, x) => a + (x.sec || 20), 0) / 60))}분</span>${D.level ? `<span class="badge on">${D.level}</span>` : ''}<span class="badge">❓ 문제 ${D.questions.length}개</span>${spot ? `<span class="badge">📍 ${spot}</span>` : ''}</div>
        <p class="lead">${D.intro || ''}</p>
        ${(D.sources || []).length ? '<button class="btn ghost small src">📚 어른을 위한 참고 자료</button>' : ''}`,
       'start',
@@ -225,12 +225,13 @@
     shell(
       `<div class="stars"><span class="on">★</span></div>
        <h1 style="text-align:center">그림 해설 끝!</h1>
-       <p class="lead" style="text-align:center">이제 퀴즈를 풀어 볼까요?</p>`,
+       <p class="lead" style="text-align:center">이제 퀴즈를 풀어 볼까요?</p>
+       ${D.think ? `<div class="card think"><b>🤔 생각해 볼까요?</b><p>${D.think}</p></div>` : ''}`,
       'result',
       `<button class="btn big qz">퀴즈 풀기 ▶</button><button class="btn again">해설 다시 보기</button>`);
     $('.qz').onclick = quiz;
     $('.again').onclick = () => story(0);
-    speak('그림 해설 끝! 이제 퀴즈를 풀어 볼까요?');
+    speak('그림 해설 끝! ' + (D.think ? '생각해 볼까요? ' + D.think + ' ' : '') + '이제 퀴즈를 풀어 볼까요?');
   }
 
   /* ---------- 퀴즈 ---------- */
