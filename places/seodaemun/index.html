@@ -4,22 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>서대문형무소 · 문화탐방</title>
-<link rel="stylesheet" href="../../common/tour.css?v=5">
-<script src="../../common/pwa.js?v=5"></script>
+<link rel="stylesheet" href="../../common/tour.css?v=6">
+<script src="../../common/pwa.js?v=6"></script>
+<style>
+.map{padding:var(--sp-2) var(--sp-2) var(--sp-1);margin-bottom:var(--sp-3)}
+.map h2{margin:0 0 4px;font-size:var(--fs-2)}
+.map-lead{margin:0 0 var(--sp-1);font-size:15px;line-height:1.45;color:var(--text-2);word-break:keep-all}
+.map-cnt{display:inline-block;margin-left:4px;padding:1px 8px;border-radius:var(--r-full);background:var(--bg);font-weight:800;color:var(--star-text)}
+.map svg{display:block;width:100%;height:auto;border-radius:var(--r-el)}
+.map a{cursor:pointer}
+.map-note{margin:6px 0 0;font-size:12px;color:var(--text-2)}
+</style>
 </head>
 <body style="--main:#8b3a2b">
 <div class="hub">
   <header class="hub-head">
     <a class="btn small back" href="../../index.html">🏠 대문</a>
     <h1>서대문형무소</h1>
-    <p class="lead">보고 싶은 이야기를 골라요. 역사관에 가면 그곳을 직접 찾아봐요!</p>
+    <p class="lead">지도 번호 순서대로 걸으며 이야기를 열어요. 역사관에 가면 그곳을 직접 찾아봐요!</p>
   </header>
+  <section class="card map" id="map"></section>
   <section class="card mine" id="mine"></section>
   <main class="items" id="cards"></main>
 </div>
 <p class="toast" id="toast" hidden></p>
-<script src="stories.js?v=5"></script>
-<script src="../../common/hub.js?v=5"></script>
-<script>Hub.render(window.STORIES, { layout: 'list' });</script>
+<script src="stories.js?v=6"></script>
+<script src="../../common/hub.js?v=6"></script>
+<script src="map.js?v=6"></script>
+<script>Hub.render(window.STORIES, { layout: 'list' }); SdmMap.render(window.STORIES);</script>
 </body>
 </html>

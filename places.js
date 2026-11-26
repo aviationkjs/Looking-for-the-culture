@@ -5,7 +5,8 @@
 window.PLACES = [
   { id: 'seodaemun', name: '서대문형무소', sub: '서울 서대문구', icon: '🧱', color: '#8b3a2b',
     path: 'places/seodaemun/index.html', ready: true,
-    stories: ['seodaemun', 'seodaemun-women8', 'seodaemun-building', 'seodaemun-gate'] },
+    stories: ['seodaemun', 'seodaemun-gate', 'seodaemun-history', 'seodaemun-cards', 'seodaemun-building', 'seodaemun-people',
+      'seodaemun-daily', 'seodaemun-hansen', 'seodaemun-tree', 'seodaemun-women8', 'seodaemun-remember'] },
   { id: 'insadong', name: '인사동', sub: '서울 종로구', icon: '🏮', color: '#2f6f6a',
     path: 'places/insadong/index.html', ready: true,
     stories: ['insadong', 'insadong-type', 'insadong-taehwa', 'insadong-sign', 'insadong-munbang'] },
