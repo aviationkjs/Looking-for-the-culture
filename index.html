@@ -4,24 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>우리 가족 문화탐방</title>
-<link rel="stylesheet" href="common/tour.css?v=7">
+<link rel="stylesheet" href="common/tour.css?v=8">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#5a6b2a">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<script src="common/pwa.js?v=7"></script>
+<script src="common/pwa.js?v=8"></script>
+<style>
+.install{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2);margin-bottom:var(--sp-3);box-shadow:var(--sh-med)}
+.install .ic{font-size:30px}
+.install .tx{flex:1;min-width:0}
+.install .tx>b{display:block;font-size:var(--fs-1)}
+.install small{display:block;font-size:13px;color:var(--text-2);line-height:1.4}
+.install .go{background:var(--main);color:#fff}
+.install .x{box-shadow:none;background:transparent;min-width:36px;padding:0}
+</style>
 </head>
 <body>
 <div class="hub">
   <header class="hub-head">
     <h1>우리 가족 문화탐방</h1>
-    <p class="lead">장소를 골라 그림 해설을 보고, 퀴즈를 풀어 별을 모아요!</p>
+    <p class="lead">장소를 골라 그림 해설·체험·인물 대화로 역사를 만나고, 별을 모아요!</p>
   </header>
+  <section class="card install" id="install" hidden></section>
   <section class="card mine" id="mine"></section>
   <main class="cards" id="cards"></main>
 </div>
 <p class="toast" id="toast" hidden></p>
-<script src="places.js?v=7"></script>
-<script src="common/hub.js?v=7"></script>
+<script src="places.js?v=8"></script>
+<script src="common/hub.js?v=8"></script>
 <script>Hub.render(window.PLACES, { layout: 'grid' });</script>
 </body>
 </html>
