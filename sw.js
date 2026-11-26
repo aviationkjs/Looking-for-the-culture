@@ -2,8 +2,24 @@
  * - 인터넷이 되면 항상 새 파일을 먼저 받아 옴 (네트워크 우선) → 올린 수정이 바로 반영
  * - 인터넷이 안 되면 저장해 둔 파일로 열림 (유적지 안에서 신호가 약해도 OK)
  * - 새 장소·이야기를 추가하면 아래 FILES 에 경로를 넣고 VERSION 숫자를 올립니다 */
-const VERSION = 'lftc-v2';
+const VERSION = 'lftc-v3';
 const FILES = [
+  'common/chat.js',
+  'common/play.js',
+  'places/insadong/typeset/game.js',
+  'places/insadong/typeset/index.html',
+  'places/insadong/chat/data.js',
+  'places/insadong/chat/index.html',
+  'places/yulgok/gwageo/game.js',
+  'places/yulgok/gwageo/index.html',
+  'places/yulgok/chat/data.js',
+  'places/yulgok/chat/index.html',
+  'places/yangnyeong/debate/game.js',
+  'places/yangnyeong/debate/index.html',
+  'places/yangnyeong/chat/data.js',
+  'places/yangnyeong/chat/index.html',
+  'places/seodaemun/chat/data.js',
+  'places/seodaemun/chat/index.html',
   './',
   'common/art.js',
   'common/hub.js',

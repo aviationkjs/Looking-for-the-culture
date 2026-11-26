@@ -58,6 +58,7 @@ window.SdmMap = {
     document.querySelectorAll('#cards .item').forEach((el, i) => {
       const s = list[i], n = el.querySelector('.num');
       if (!s || !n) return;
+      if (s.stop == null) return;            // 지도 번호 없는 이야기(인물 대화 등)는 아이콘 그대로
       n.textContent = s.stop ? s.stop : '출발';
       n.style.cssText = `background:${s.color};color:#fff;font-weight:800;font-size:${s.stop ? 18 : 13}px`;
     });

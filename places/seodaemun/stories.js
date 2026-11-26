@@ -26,6 +26,8 @@ window.STORIES = [
     color: '#4a5a3a', path: 'tree/index.html', ready: true, stop: 8, x: 100, y: 52, level: '고학년' },
   { id: 'seodaemun-women8', name: '여옥사 8호 감방', sub: '찾아볼 곳: 여옥사', icon: '🌸',
     color: '#b0456e', path: 'women8/index.html', ready: true, stop: 9, x: 100, y: 186 },
+  { id: 'seodaemun-chat', name: '유관순과 대화', sub: '여옥사 8호 감방 앞에서 · 지도 ⑨ 근처', icon: '💬',
+    color: '#b0456e', path: 'chat/index.html', ready: true, tag: '💬 인물 대화' },
   { id: 'seodaemun-remember', name: '우리가 기억하는 방법', sub: '찾아볼 곳: 독립공원 순국선열추념탑', icon: '🕯️',
     color: '#8a6a2a', path: 'remember/index.html', ready: true, stop: 10, x: 92, y: 272, level: '고학년' }
 ];

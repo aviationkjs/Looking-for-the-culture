@@ -3,6 +3,7 @@
  *   grid : 대문 — 2열 장소 카드 (상태 배지 + 이야기 진행 막대)
  *   list : 작은 대문 — 세로 이야기 목록 (번호 + 찾아볼 곳 + 별)
  * 항목: { id, name, sub, icon, color, path, ready, stories? }
+ *   level·tag 가 있으면 목록 카드에 배지 (예: '고학년', '🎮 체험', '💬 인물 대화')
  *   stories 가 있으면(대문의 장소 카드) 그 이야기들의 별을 모두 더해 보여 줍니다.
  * 화면 맨 위 #mine 상자에는 '나의 탐방' 요약(별 진행 원)을 그립니다. */
 window.Hub = {
@@ -31,7 +32,7 @@ window.Hub = {
         el.className = 'item' + (p.ready ? '' : ' soon');
         const starTxt = !p.ready ? '<span class="badge">준비 중</span>'
           : s ? `${'★'.repeat(s)}<i>${'★'.repeat(3 - s)}</i>` : '<i>★★★</i>';
-        const tag = (i === 0 && !s && p.ready ? '<span class="badge on">여기부터</span>' : '') + (p.level ? `<span class="badge">${p.level}</span>` : '');
+        const tag = (i === 0 && !s && p.ready ? '<span class="badge on">여기부터</span>' : '') + (p.level ? `<span class="badge">${p.level}</span>` : '') + (p.tag ? `<span class="badge">${p.tag}</span>` : '');
         el.innerHTML = `<span class="num">${p.icon}</span><span class="tx"><b>${esc(p.name)}</b><small>${esc(p.sub)}</small>${tag}</span><span class="st">${starTxt}</span>`;
       } else {
         el.className = 'pcard' + (p.ready ? '' : ' soon');
