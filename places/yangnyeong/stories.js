@@ -7,6 +7,10 @@ window.STORIES = [
     color: '#6b3e26', path: 'hyeonpan/index.html', ready: true, level: '고학년' },
   { id: 'yangnyeong-jideok', name: '지덕사, 양보를 기리는 집', sub: '찾아볼 곳: 지덕사 사당 · 연못', icon: '🏠',
     color: '#2f5d50', path: 'jideok/index.html', ready: true, level: '고학년' },
+  { id: 'yangnyeong-debate', name: '토론 카드', sub: '맏아들? 뛰어난 사람? 내 생각을 골라요', icon: '🗣️',
+    color: '#3a5a8b', path: 'debate/index.html', ready: true, level: '고학년', tag: '🎮 체험' },
   { id: 'yangnyeong-mission', name: '묘역 탐구 미션', sub: '찾아볼 곳: 입구부터 둘레길까지', icon: '🧭',
-    color: '#3a5a8b', path: 'mission/index.html', ready: true, level: '고학년' }
+    color: '#3a5a8b', path: 'mission/index.html', ready: true, level: '고학년' },
+  { id: 'yangnyeong-chat', name: '양녕대군과 대화', sub: '찾아볼 곳: 지덕사 사당', icon: '💬',
+    color: '#8a6400', path: 'chat/index.html', ready: true, level: '고학년', tag: '💬 인물 대화' }
 ];

@@ -5,8 +5,12 @@ window.STORIES = [
     color: '#6a4c93', path: 'main/index.html', ready: true },
   { id: 'yulgok-jangwon', name: '아홉 번 장원급제', sub: '찾아볼 곳: 율곡기념관', icon: '🏆',
     color: '#b5651d', path: 'jangwon/index.html', ready: true },
+  { id: 'yulgok-gwageo', name: '과거시험 체험', sub: '율곡처럼 장원급제에 도전! · 집에서도 OK', icon: '📜',
+    color: '#6a4c93', path: 'gwageo/index.html', ready: true, tag: '🎮 체험' },
   { id: 'yulgok-hwaseok', name: '화석정의 비밀', sub: '찾아볼 곳: 화석정(파평면, 임진강 언덕)', icon: '⭐',
     color: '#2c4a7a', path: 'hwaseok/index.html', ready: true },
   { id: 'yulgok-seowon', name: '자운서원과 가족 묘', sub: '찾아볼 곳: 자운서원 · 느티나무 · 가족 묘', icon: '🏫',
-    color: '#4a7a4a', path: 'seowon/index.html', ready: true }
+    color: '#4a7a4a', path: 'seowon/index.html', ready: true },
+  { id: 'yulgok-chat', name: '율곡 이이와 대화', sub: '찾아볼 곳: 율곡기념관', icon: '💬',
+    color: '#6a4c93', path: 'chat/index.html', ready: true, tag: '💬 인물 대화' }
 ];

@@ -6,14 +6,14 @@ window.PLACES = [
   { id: 'seodaemun', name: '서대문형무소', sub: '서울 서대문구', icon: '🧱', color: '#8b3a2b',
     path: 'places/seodaemun/index.html', ready: true,
     stories: ['seodaemun', 'seodaemun-gate', 'seodaemun-history', 'seodaemun-cards', 'seodaemun-building', 'seodaemun-people',
-      'seodaemun-daily', 'seodaemun-hansen', 'seodaemun-tree', 'seodaemun-women8', 'seodaemun-remember'] },
+      'seodaemun-daily', 'seodaemun-hansen', 'seodaemun-tree', 'seodaemun-women8', 'seodaemun-chat', 'seodaemun-remember'] },
   { id: 'insadong', name: '인사동', sub: '서울 종로구', icon: '🏮', color: '#2f6f6a',
     path: 'places/insadong/index.html', ready: true,
-    stories: ['insadong', 'insadong-type', 'insadong-taehwa', 'insadong-sign', 'insadong-munbang'] },
+    stories: ['insadong', 'insadong-type', 'insadong-typeset', 'insadong-taehwa', 'insadong-chat', 'insadong-sign', 'insadong-munbang'] },
   { id: 'yulgok', name: '파주 율곡 이이 유적', sub: '경기 파주시', icon: '📜', color: '#6a4c93',
     path: 'places/yulgok/index.html', ready: true,
-    stories: ['yulgok', 'yulgok-jangwon', 'yulgok-hwaseok', 'yulgok-seowon'] },
+    stories: ['yulgok', 'yulgok-jangwon', 'yulgok-gwageo', 'yulgok-hwaseok', 'yulgok-seowon', 'yulgok-chat'] },
   { id: 'yangnyeong', name: '양녕대군 묘역·지덕사', sub: '서울 동작구', icon: '👑', color: '#8a6400',
     path: 'places/yangnyeong/index.html', ready: true, level: '고학년',
-    stories: ['yangnyeong', 'yangnyeong-hyeonpan', 'yangnyeong-jideok', 'yangnyeong-mission'] }
+    stories: ['yangnyeong', 'yangnyeong-hyeonpan', 'yangnyeong-jideok', 'yangnyeong-debate', 'yangnyeong-mission', 'yangnyeong-chat'] }
 ];
