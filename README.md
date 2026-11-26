@@ -355,6 +355,7 @@ SVG 요소에 `class="a-이름"` 과 `style="--d:시작지연"` 을 붙입니다
 - [ ] `stories.js`·`places.js` 의 `id`·`path`·`stories` 가 폴더·`data.js` 와 일치
 - [ ] 브라우저 개발자 도구(F12) 콘솔에 빨간 오류 없음
 - [ ] 용량: 이야기 폴더 하나 20KB 이하
+- [ ] 새 HTML 이면 `<head>` 에 `common/pwa.js` 스크립트가 있음, `sw.js` 의 `FILES` 에 새 파일을 넣고 `VERSION` 을 올림
 
 용량 확인 명령 (Git Bash / macOS / Linux):
 ```bash
@@ -371,7 +372,7 @@ du -sh places/*/*/ common/
 | 이야기 1개 (`places/<장소>/<이야기>/`) | 20KB 이하 | 약 7~12KB |
 | 대문·작은 대문·목록 | 5KB 이하 | 약 2KB씩 |
 
-- 사진(JPG/PNG), 음원(MP3), 글꼴 파일, 외부 라이브러리(CDN 포함)는 넣지 않습니다
+- 사진(JPG/PNG), 음원(MP3)(단, 앱 아이콘 `icons/` 4개 약 40KB는 예외), 글꼴 파일, 외부 라이브러리(CDN 포함)는 넣지 않습니다
 - 소리는 브라우저 내장 음성(읽어 주기)과 WebAudio 효과음만 씁니다
 - 여러 이야기에 쓰는 그림은 `common/art.js` 에 넣어 한 번만 내려받게 합니다
 
@@ -387,3 +388,20 @@ du -sh places/*/*/ common/
 | `lftc:voice` | 읽어 주기 `on` / `off` |
 
 기록을 지우려면 브라우저 개발자 도구 → Application → Local Storage 에서 `lftc:` 로 시작하는 항목을 지웁니다.
+
+---
+
+## 13. 앱으로 설치하기 (PWA)
+
+GitHub Pages 주소를 휴대폰 크롬으로 열고 **메뉴(⋮) → 홈 화면에 추가 / 앱 설치** 를 누르면 아이콘이 생기고 앱처럼 열립니다. (아이폰 사파리: 공유 → 홈 화면에 추가)
+
+| 파일 | 역할 |
+| --- | --- |
+| `manifest.webmanifest` | 앱 이름·아이콘·색 |
+| `icons/` | 앱 아이콘 (192·512·마스커블·아이폰용) |
+| `sw.js` | 서비스 워커 — 인터넷이 되면 새 파일 먼저(올린 수정이 바로 반영), 안 되면 저장된 파일로 열림 |
+| `common/pwa.js` | 모든 HTML이 불러와 매니페스트 연결·서비스 워커 등록 (`file://` 에서는 아무것도 안 함) |
+
+**새 장소·이야기를 추가할 때**
+1. 새 `index.html` 의 `</head>` 앞에 `<script src="../../../common/pwa.js?v=5"></script>` (깊이에 맞게 `../` 조정) — `_template` 에 이미 들어 있음
+2. `sw.js` 의 `FILES` 에 새 파일 경로를 넣고 `VERSION` 숫자를 올림 (`lftc-v1` → `lftc-v2`) — 오프라인에서도 미리 열리게 하기 위함
